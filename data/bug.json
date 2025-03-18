@@ -1,31 +1,24 @@
 [
     {
-        "_id": "bug001",
-        "title": "Login button not working",
-        "description": "Clicking login does nothing",
-        "severity": 2,
-        "createdAt": 1642107359454
-    },
-    {
         "_id": "bug003",
         "title": "Dashboard not loading",
         "description": "Gets stuck on loading screen",
-        "severity": 1,
-        "createdAt": 1644107359454
+        "severity": 99,
+        "createdAt": 1742306457289
     },
     {
         "_id": "bug004",
         "title": "Cannot add items to cart",
         "description": "Clicking 'Add to cart' does not update cart",
         "severity": 2,
-        "createdAt": 1645107359454
+        "createdAt": null
     },
     {
         "_id": "bug005",
         "title": "Checkout page crashes",
         "description": "Error 500 when proceeding to checkout",
-        "severity": 1,
-        "createdAt": 1646107359454
+        "severity": 436436,
+        "createdAt": 1742306444632
     },
     {
         "_id": "bug006",
@@ -53,7 +46,7 @@
         "title": "Search function returning incorrect results",
         "description": "Searching for a term gives unrelated results",
         "severity": 3,
-        "createdAt": 1650107359454
+        "createdAt": null
     },
     {
         "_id": "bug010",

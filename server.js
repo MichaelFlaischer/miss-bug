@@ -1,5 +1,5 @@
 import express from 'express'
-import { bugService } from './services/bug.service.js'
+import { bugService } from './public/services/bug.service.js'
 const app = express()
 
 app.use(express.static('public'))
@@ -57,6 +57,25 @@ app.get('/api/bug/:bugId/remove', (req, res) => {
     .catch((err) => {
       console.log('Cannot remove bug', err)
       res.status(500).send('Cannot remove bug')
+    })
+})
+
+//* Save/Update
+app.get('/api/bug/save/', (req, res) => {
+  const bugToSave = {
+    _id: req.query._id || null,
+    title: req.query.title,
+    description: req.query.description,
+    severity: +req.query.severity,
+    createdAt: Date.now(),
+  }
+
+  bugService
+    .save(bugToSave)
+    .then((bug) => res.send(bug))
+    .catch((err) => {
+      console.log('Cannot save bug', err)
+      res.status(500).send('Cannot save bug')
     })
 })
 

@@ -8,9 +8,10 @@ export const bugService = {
   getById,
   remove,
   save,
+  getDefaultFilter,
 }
 
-function query() {
+function query(filterBy) {
   return Promise.resolve(bugs)
 }
 
@@ -31,6 +32,7 @@ function save(bugToSave) {
   if (bugToSave._id) {
     const bugIdx = bugs.findIndex((bug) => bug._id === bugToSave._id)
     bugs[bugIdx] = bugToSave
+    bugs[bugIdx].createdAt = Date.now()
   } else {
     bugToSave._id = utilService.makeId()
     bugs.unshift(bugToSave)
@@ -49,4 +51,8 @@ function _savebugsToFile() {
       resolve()
     })
   })
+}
+
+function getDefaultFilter() {
+  return { txt: '', minSeverity: 0 }
 }

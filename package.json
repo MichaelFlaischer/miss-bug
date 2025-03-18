@@ -1,0 +1,20 @@
+{
+  "name": "miss-bug",
+  "version": "1.0.0",
+  "description": "Miss-Bug is a full-stack learning project developed as part of the CODING ACADEMY course, designed to practice and enhance skills in Node.js and React.",
+  "main": "server.js",
+  "type": "module",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.2"
+  }
+}

@@ -8,26 +8,26 @@ export const bugService = {
   getDefaultFilter,
 }
 
-function query(filterBy) {
+function query(filterBy = {}) {
+  const params = new URLSearchParams()
+
+  if (filterBy.txt) params.append('title', filterBy.txt)
+  if (filterBy.minSeverity) params.append('severity', filterBy.minSeverity)
+
   return axios
-    .get(BASE_URL)
+    .get(BASE_URL, { params }) // שימוש בפרמטרים ישירות
     .then((res) => res.data)
-    .then((bugs) => {
-      if (filterBy.txt) {
-        const regExp = new RegExp(filterBy.txt, 'i')
-        bugs = bugs.filter((bug) => regExp.test(bug.title))
-      }
-
-      if (filterBy.minSeverity) {
-        bugs = bugs.filter((bug) => bug.severity >= filterBy.minSeverity)
-      }
-
-      return bugs
+    .catch((err) => {
+      console.log('Error fetching bugs:', err)
+      return []
     })
 }
 
 function getById(bugId) {
-  return axios.get(BASE_URL + bugId).then((res) => res.data)
+  return axios
+    .get(BASE_URL + bugId)
+    .then((res) => res.data)
+    .catch((bugErr) => console.log(bugErr))
 }
 
 function remove(bugId) {

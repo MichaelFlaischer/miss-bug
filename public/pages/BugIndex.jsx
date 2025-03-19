@@ -33,6 +33,7 @@ export function BugIndex() {
   function onAddBug() {
     const bug = {
       title: prompt('Bug title?', 'Bug ' + Date.now()),
+      description: prompt('Bug description?', 'A new bug detected'),
       severity: +prompt('Bug severity?', 3),
     }
 

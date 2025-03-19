@@ -9,11 +9,21 @@ app.use(cookieParser())
 
 //* Express Routing:
 
-//* Read
+//* Read (returns all bugs or filtered results)
 app.get('/api/bug', (req, res) => {
+  const { title, severity, description } = req.query
+
   bugService
     .query()
-    .then((bugs) => res.send(bugs))
+    .then((bugs) => {
+      let filteredBugs = bugs
+
+      if (title) filteredBugs = filteredBugs.filter((bug) => bug.title.toLowerCase().includes(title.toLowerCase()))
+      if (severity) filteredBugs = filteredBugs.filter((bug) => bug.severity === +severity)
+      if (description) filteredBugs = filteredBugs.filter((bug) => bug.description.toLowerCase().includes(description.toLowerCase()))
+
+      res.send(filteredBugs)
+    })
     .catch((err) => {
       console.log('Cannot get bugs', err)
       res.status(500).send('Cannot load bugs')
@@ -45,7 +55,7 @@ app.get('/api/bug/:bugId', (req, res) => {
 
   let visitedBugs = req.cookies.visitedBugs ? JSON.parse(req.cookies.visitedBugs) : []
 
-  // if (visitedBugs.length >= 3) return res.status(401).send('wait for bit')
+  if (visitedBugs.length >= 1) return res.status(401).send('wait for bit')
 
   if (!visitedBugs.includes(bugId)) visitedBugs.push(bugId)
   res.cookie('visitedBugs', JSON.stringify(visitedBugs), { maxAge: 1000 * 7, httpOnly: true })

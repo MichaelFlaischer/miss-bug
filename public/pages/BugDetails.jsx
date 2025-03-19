@@ -12,7 +12,10 @@ export function BugDetails() {
     bugService
       .getById(bugId)
       .then((bug) => setBug(bug))
-      .catch((err) => showErrorMsg(`Cannot load bug`, err))
+      .catch((err) => {
+        console.log(err)
+        showErrorMsg(`Cannot load bug`, err)
+      })
   }, [])
 
   return (

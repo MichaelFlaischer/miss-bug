@@ -1,8 +1,11 @@
+import cookieParser from 'cookie-parser'
 import express from 'express'
 import { bugService } from './public/services/bug.service.js'
+
 const app = express()
 
 app.use(express.static('public'))
+app.use(cookieParser())
 
 //* Express Routing:
 
@@ -39,6 +42,15 @@ app.get('/api/bug/save', (req, res) => {
 //* Get/Read by id
 app.get('/api/bug/:bugId', (req, res) => {
   const { bugId } = req.params
+
+  let visitedBugs = req.cookies.visitedBugs ? JSON.parse(req.cookies.visitedBugs) : []
+
+  // if (visitedBugs.length >= 3) return res.status(401).send('wait for bit')
+
+  if (!visitedBugs.includes(bugId)) visitedBugs.push(bugId)
+  res.cookie('visitedBugs', JSON.stringify(visitedBugs), { maxAge: 1000 * 7, httpOnly: true })
+  console.log('Visited Bugs:', visitedBugs)
+
   bugService
     .getById(bugId)
     .then((bug) => res.send(bug))
@@ -82,6 +94,15 @@ app.get('/api/bug/save/', (req, res) => {
 app.get('/', (req, res) => {
   res.send('Hello And Welcome')
 })
+
+function saveBugVisitToCookies(req) {
+  const { bugId } = req.params
+  let visitedBugs = req.cookies.visitedBugs ? JSON.parse(req.cookies.visitedBugs) : []
+
+  if (!visitedBugs.includes(bugId)) visitedBugs.push(bugId)
+  res.cookie('visitedBugs', JSON.stringify(visitedBugs), { maxAge: 1000 * 60 * 60 * 24, httpOnly: true })
+  console.log('Visited Bugs:', visitedBugs)
+}
 
 const port = 3030
 app.listen(port, () => console.log(`Server listening on port http://127.0.0.1:${port}/`))

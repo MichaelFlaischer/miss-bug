@@ -84,13 +84,6 @@
         "createdAt": 1655107359454
     },
     {
-        "_id": "bug015",
-        "title": "Tooltips not displaying",
-        "description": "Hovering over icons does not show tooltips",
-        "severity": 4,
-        "createdAt": 1656107359454
-    },
-    {
         "_id": "bug016",
         "title": "Password reset email not sent",
         "description": "Users do not receive reset email",

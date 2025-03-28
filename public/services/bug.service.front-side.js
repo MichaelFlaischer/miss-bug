@@ -27,7 +27,7 @@ function getById(bugId) {
   return axios
     .get(BASE_URL + bugId)
     .then((res) => res.data)
-    .catch((bugErr) => console.log(bugErr))
+    .catch((bugErr) => console.dir(bugErr, 'hello'))
 }
 
 function remove(bugId) {

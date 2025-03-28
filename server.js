@@ -55,7 +55,7 @@ app.get('/api/bug/:bugId', (req, res) => {
 
   let visitedBugs = req.cookies.visitedBugs ? JSON.parse(req.cookies.visitedBugs) : []
 
-  if (visitedBugs.length >= 1) return res.status(401).send('wait for bit')
+  if (visitedBugs.length >= 3) return res.status(401).send('wait for bit')
 
   if (!visitedBugs.includes(bugId)) visitedBugs.push(bugId)
   res.cookie('visitedBugs', JSON.stringify(visitedBugs), { maxAge: 1000 * 7, httpOnly: true })

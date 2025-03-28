@@ -35,3 +35,17 @@
 28.3.2025, 17:12:12 - INFO - user loaded bugs
 28.3.2025, 17:12:13 - INFO - user loaded bugs
 28.3.2025, 17:12:13 - INFO - user loaded bugs
+28.3.2025, 19:00:03 - INFO - Visited Bugs: | ["bug003"]
+28.3.2025, 19:00:48 - INFO - Visited Bugs: | ["It0tqs"]
+28.3.2025, 19:02:22 - INFO - Visited Bugs: | ["It0tqs"]
+28.3.2025, 19:03:06 - INFO - Visited Bugs: | ["bug003"]
+28.3.2025, 19:18:10 - INFO - Visited Bugs: | ["bug003"]
+28.3.2025, 19:25:09 - INFO - Visited Bugs: | ["bug003"]
+28.3.2025, 19:33:20 - INFO - Visited Bugs: | ["It0tqs"]
+28.3.2025, 19:33:22 - ERROR - Cannot generate PDF | Cannot find bug - undefined
+28.3.2025, 19:34:04 - INFO - Visited Bugs: | ["It0tqs"]
+28.3.2025, 19:35:09 - INFO - Visited Bugs: | ["bug006"]
+28.3.2025, 19:37:43 - INFO - Visited Bugs: | ["bug003"]
+28.3.2025, 19:43:01 - INFO - Visited Bugs: | ["bug004"]
+28.3.2025, 19:49:42 - INFO - Visited Bugs: | ["bug012"]
+28.3.2025, 19:49:49 - INFO - Visited Bugs: | ["bug012","bug007"]

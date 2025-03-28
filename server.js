@@ -1,5 +1,7 @@
 import cookieParser from 'cookie-parser'
 import express from 'express'
+import PDFDocument from 'pdfkit'
+
 import { bugService } from './public/services/bug.service.js'
 import { loggerService } from './public/services/logger.service.js'
 
@@ -78,6 +80,35 @@ app.get('/api/bug/:bugId', (req, res) => {
     .catch((err) => {
       loggerService.error('Cannot get bug', err)
       res.status(500).send('Cannot load bug')
+    })
+})
+
+app.get('/api/bug/:bugId/pdf', (req, res) => {
+  const { bugId } = req.params
+
+  bugService
+    .getById(bugId)
+    .then((bug) => {
+      if (!bug) return res.status(404).send('Bug not found')
+
+      res.setHeader('Content-Type', 'application/pdf')
+      res.setHeader('Content-Disposition', `attachment; filename=bug_${bugId}_report.pdf`)
+
+      const doc = new PDFDocument()
+      doc.pipe(res)
+
+      doc.fontSize(16).text('Bug Report', { align: 'center' }).moveDown()
+      doc.fontSize(12).text(`ID: ${bug._id}`)
+      doc.text(`Title: ${bug.title}`)
+      doc.text(`Description: ${bug.description}`)
+      doc.text(`Severity: ${bug.severity}`)
+      doc.text(`Created At: ${new Date(bug.createdAt).toLocaleString()}`)
+
+      doc.end()
+    })
+    .catch((err) => {
+      loggerService.error('Cannot generate PDF', err)
+      res.status(500).send('Failed to generate PDF')
     })
 })
 

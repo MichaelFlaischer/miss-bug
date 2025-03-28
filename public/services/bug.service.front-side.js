@@ -6,6 +6,7 @@ export const bugService = {
   save,
   remove,
   getDefaultFilter,
+  getPDFById,
 }
 
 function query(queryOptions) {
@@ -23,6 +24,22 @@ function getById(bugId) {
     .get(BASE_URL + bugId)
     .then((res) => res.data)
     .catch((bugErr) => console.dir(bugErr, 'hello'))
+}
+
+function getPDFById(bugId) {
+  const url = `${BASE_URL}${bugId}/pdf`
+  return axios
+    .get(url, { responseType: 'blob' })
+    .then((res) => {
+      const blob = new Blob([res.data], { type: 'application/pdf' })
+      const link = document.createElement('a')
+      link.href = URL.createObjectURL(blob)
+      link.download = `bug_${bugId}_report.pdf`
+      link.click()
+    })
+    .catch((err) => {
+      console.error('Failed to download PDF:', err)
+    })
 }
 
 function remove(bugId) {

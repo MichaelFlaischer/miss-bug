@@ -1,4 +1,4 @@
-const { useState, useEffect } = React
+const { useState, useEffect, useRef } = React
 const { Link, useParams } = ReactRouterDOM
 
 import { bugService } from '../services/bug.service.front-side.js'
@@ -18,6 +18,10 @@ export function BugDetails() {
       })
   }, [])
 
+  function handleDownloadPDF() {
+    bugService.getPDFById(bugId)
+  }
+
   return (
     <div className='bug-details'>
       <h3>Bug Details</h3>
@@ -31,6 +35,7 @@ export function BugDetails() {
           <h5>
             Severity: <span>{bug.severity}</span>
           </h5>
+          <button onClick={() => handleDownloadPDF()}>Save Bug PDF</button>
         </div>
       )}
       <hr />

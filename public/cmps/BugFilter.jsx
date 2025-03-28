@@ -1,11 +1,7 @@
-const { useState, useEffect } = React
+const { useState } = React
 
 export function BugFilter({ filterBy, onSetFilterBy }) {
   const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
-
-  useEffect(() => {
-    onSetFilterBy(filterByToEdit)
-  }, [filterByToEdit])
 
   function handleChange({ target }) {
     const field = target.name

@@ -8,14 +8,9 @@ export const bugService = {
   getDefaultFilter,
 }
 
-function query(filterBy = {}) {
-  const params = new URLSearchParams()
-
-  if (filterBy.txt) params.append('title', filterBy.txt)
-  if (filterBy.minSeverity) params.append('severity', filterBy.minSeverity)
-
+function query(queryOptions) {
   return axios
-    .get(BASE_URL, { params }) // שימוש בפרמטרים ישירות
+    .get(BASE_URL, { params: queryOptions })
     .then((res) => res.data)
     .catch((err) => {
       console.log('Error fetching bugs:', err)
@@ -49,5 +44,5 @@ function save(bug) {
 }
 
 function getDefaultFilter() {
-  return { txt: '', minSeverity: 0 }
+  return { txt: '', severity: 0 }
 }

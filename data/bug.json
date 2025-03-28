@@ -1,5 +1,12 @@
 [
     {
+        "_id": "It0tqs",
+        "title": "Bug 1743171047077",
+        "description": "A new bug detected",
+        "severity": 3,
+        "createdAt": null
+    },
+    {
         "_id": "bug003",
         "title": "Dashboard not loading",
         "description": "Gets stuck on loading screen",
@@ -52,8 +59,8 @@
         "_id": "bug010",
         "title": "Cannot delete account",
         "description": "Clicking 'Delete Account' does nothing",
-        "severity": 1,
-        "createdAt": 1651107359454
+        "severity": 565,
+        "createdAt": 1743171041903
     },
     {
         "_id": "bug011",

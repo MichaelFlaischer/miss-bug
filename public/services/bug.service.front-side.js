@@ -7,6 +7,7 @@ export const bugService = {
   remove,
   getDefaultFilter,
   getPDFById,
+  getAvailableLabels,
 }
 
 function query(queryOptions) {
@@ -23,7 +24,9 @@ function getById(bugId) {
   return axios
     .get(BASE_URL + bugId)
     .then((res) => res.data)
-    .catch((err) => console.error('Error fetching bug by ID:', err))
+    .catch((err) => {
+      console.error('Error fetching bug by ID:', err)
+    })
 }
 
 function getPDFById(bugId) {
@@ -69,11 +72,23 @@ function save(bug) {
   }
 }
 
+function getAvailableLabels() {
+  return axios
+    .get(BASE_URL + 'labels')
+    .then((res) => res.data)
+    .catch((err) => {
+      console.error('Failed to fetch labels:', err)
+      return []
+    })
+}
+
 function getDefaultFilter() {
   return {
     title: '',
     description: '',
     severity: 0,
     labels: [],
+    sortBy: 'title',
+    sortOrder: 'asc',
   }
 }

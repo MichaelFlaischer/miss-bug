@@ -1,13 +1,81 @@
 .bug-filter {
-    background-color: var(--gray2);
-    padding: 1em;
+  background-color: var(--gray2);
+  padding: 1em;
 }
 
 .bug-filter h2 {
-    margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 .bug-filter label {
-    margin-inline-start: 1em;
+  margin-inline-start: 1em;
 }
 
+.bug-filter form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.bug-filter input {
+  padding: 0.4em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-inline-start: 0.5em;
+}
+
+.bug-filter button[type='submit'],
+.bug-filter button[type='button'] {
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 6px;
+  background-color: #1976d2;
+  color: white;
+  cursor: pointer;
+  margin-top: 0.5em;
+}
+
+.bug-filter button[type='button']:not(:first-of-type) {
+  background-color: #9e9e9e;
+}
+
+.label-filter {
+  margin-top: 1em;
+}
+
+.label-filter h4 {
+  margin-bottom: 0.5em;
+}
+
+label.tag {
+  padding: 0.3em 0.6em;
+  border-radius: 0.3em;
+  margin: 4px;
+  font-size: 0.9em;
+  cursor: pointer;
+  background-color: #e0e0e0;
+  display: inline-block;
+}
+
+label.tag:has(input:checked) {
+  background-color: #4caf50;
+  color: white;
+}
+
+label.tag > input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+label.tag:has(input:focus-visible) {
+  outline: 2px solid darkblue;
+  outline-offset: 2px;
+}
+
+.sort-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 1em;
+}

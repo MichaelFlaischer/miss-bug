@@ -13,7 +13,7 @@ app.use(cookieParser())
 app.use(bodyParser.json())
 
 app.get('/api/bug', (req, res) => {
-  const { title, severity, description, labels } = req.query
+  const { title, severity, description, labels, sortBy, sortOrder } = req.query
 
   bugService
     .query()
@@ -35,6 +35,21 @@ app.get('/api/bug', (req, res) => {
       if (labels) {
         const labelList = labels.split(',').map((label) => label.trim().toLowerCase())
         filteredBugs = filteredBugs.filter((bug) => bug.labels?.some((label) => labelList.includes(label.toLowerCase())))
+      }
+
+      if (sortBy) {
+        const order = sortOrder === 'desc' ? -1 : 1
+
+        filteredBugs.sort((a, b) => {
+          const aVal = a[sortBy]
+          const bVal = b[sortBy]
+
+          if (typeof aVal === 'string' && typeof bVal === 'string') {
+            return aVal.localeCompare(bVal) * order
+          } else {
+            return (aVal - bVal) * order
+          }
+        })
       }
 
       res.send(filteredBugs)

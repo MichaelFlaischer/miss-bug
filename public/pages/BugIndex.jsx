@@ -9,14 +9,27 @@ import { BugList } from '../cmps/BugList.jsx'
 export function BugIndex() {
   const [bugs, setBugs] = useState(null)
   const [filterBy, setFilterBy] = useState(bugService.getDefaultFilter())
+  const [availableLabels, setAvailableLabels] = useState([])
 
   useEffect(() => {
     loadBugs()
   }, [filterBy])
 
-  function loadBugs() {
+  useEffect(() => {
     bugService
-      .query(filterBy)
+      .getAvailableLabels()
+      .then(setAvailableLabels)
+      .catch((err) => showErrorMsg(`Couldn't load labels - ${err}`))
+  }, [])
+
+  function loadBugs() {
+    const queryParams = {
+      ...filterBy,
+      labels: filterBy.labels.join(',') || '',
+    }
+
+    bugService
+      .query(queryParams)
       .then(setBugs)
       .catch((err) => showErrorMsg(`Couldn't load bugs - ${err}`))
   }
@@ -56,20 +69,19 @@ export function BugIndex() {
       .save(bugToSave)
       .then((savedBug) => {
         const bugsToUpdate = bugs.map((currBug) => (currBug._id === savedBug._id ? savedBug : currBug))
-
         setBugs(bugsToUpdate)
         showSuccessMsg('Bug updated')
       })
       .catch((err) => showErrorMsg('Cannot update bug', err))
   }
 
-  function onSetFilterBy(filterBy) {
-    setFilterBy((prevFilter) => ({ ...prevFilter, ...filterBy }))
+  function onSetFilterBy(newFilter) {
+    setFilterBy((prevFilter) => ({ ...prevFilter, ...newFilter }))
   }
 
   return (
     <section className='bug-index main-content'>
-      <BugFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
+      <BugFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} availableLabels={availableLabels} />
       <header>
         <h3>Bug List</h3>
         <button onClick={onAddBug}>Add Bug</button>

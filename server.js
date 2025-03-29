@@ -2,8 +2,8 @@ import cookieParser from 'cookie-parser'
 import express from 'express'
 import PDFDocument from 'pdfkit'
 
-import { bugService } from './public/services/bug.service.js'
-import { loggerService } from './public/services/logger.service.js'
+import { bugService } from './services/bug.service.server-side.js'
+import { loggerService } from './services/logger.service.js'
 
 const app = express()
 

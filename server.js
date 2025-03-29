@@ -45,6 +45,16 @@ app.get('/api/bug', (req, res) => {
     })
 })
 
+app.get('/api/bug/labels', (req, res) => {
+  bugService
+    .getAvailableLabels()
+    .then((labels) => res.send(labels))
+    .catch((err) => {
+      loggerService.error('Cannot get labels', err)
+      res.status(500).send('Failed to load labels')
+    })
+})
+
 app.get('/api/bug/:bugId', (req, res) => {
   const { bugId } = req.params
   let visitedBugs = req.cookies.visitedBugs ? JSON.parse(req.cookies.visitedBugs) : []

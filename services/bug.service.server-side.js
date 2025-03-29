@@ -9,6 +9,7 @@ export const bugService = {
   remove,
   save,
   getDefaultFilter,
+  getAvailableLabels,
 }
 
 function query(filterBy) {
@@ -51,6 +52,18 @@ function _savebugsToFile() {
       resolve()
     })
   })
+}
+
+function getAvailableLabels() {
+  const labelSet = new Set()
+
+  bugs.forEach((bug) => {
+    if (Array.isArray(bug.labels)) {
+      bug.labels.forEach((label) => labelSet.add(label))
+    }
+  })
+
+  return Promise.resolve([...labelSet])
 }
 
 function getDefaultFilter() {

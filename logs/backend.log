@@ -49,3 +49,5 @@
 28.3.2025, 19:43:01 - INFO - Visited Bugs: | ["bug004"]
 28.3.2025, 19:49:42 - INFO - Visited Bugs: | ["bug012"]
 28.3.2025, 19:49:49 - INFO - Visited Bugs: | ["bug012","bug007"]
+29.3.2025, 12:38:53 - ERROR - Cannot get bug | Cannot find bug - labels
+29.3.2025, 12:39:17 - ERROR - Cannot get bug | Cannot find bug - labels

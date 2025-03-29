@@ -9,28 +9,27 @@ import { BugList } from '../cmps/BugList.jsx'
 export function BugIndex() {
   const [bugs, setBugs] = useState(null)
   const [filterBy, setFilterBy] = useState(bugService.getDefaultFilter())
-  const [availableLabels, setAvailableLabels] = useState([])
+  const [pageIdx, setPageIdx] = useState(0)
+  const [totalPages, setTotalPages] = useState(0)
+  const PAGE_SIZE = 5
 
   useEffect(() => {
     loadBugs()
-  }, [filterBy])
-
-  useEffect(() => {
-    bugService
-      .getAvailableLabels()
-      .then(setAvailableLabels)
-      .catch((err) => showErrorMsg(`Couldn't load labels - ${err}`))
-  }, [])
+  }, [filterBy, pageIdx])
 
   function loadBugs() {
-    const queryParams = {
+    const queryOptions = {
       ...filterBy,
-      labels: filterBy.labels.join(',') || '',
+      pageIdx,
+      pageSize: PAGE_SIZE,
     }
 
     bugService
-      .query(queryParams)
-      .then(setBugs)
+      .query(queryOptions)
+      .then(({ bugs, totalPages }) => {
+        setBugs(bugs)
+        setTotalPages(totalPages)
+      })
       .catch((err) => showErrorMsg(`Couldn't load bugs - ${err}`))
   }
 
@@ -38,9 +37,8 @@ export function BugIndex() {
     bugService
       .remove(bugId)
       .then(() => {
-        const bugsToUpdate = bugs.filter((bug) => bug._id !== bugId)
-        setBugs(bugsToUpdate)
         showSuccessMsg('Bug removed')
+        loadBugs()
       })
       .catch((err) => showErrorMsg(`Cannot remove bug`, err))
   }
@@ -54,9 +52,9 @@ export function BugIndex() {
 
     bugService
       .save(bug)
-      .then((savedBug) => {
-        setBugs([...bugs, savedBug])
+      .then(() => {
         showSuccessMsg('Bug added')
+        loadBugs()
       })
       .catch((err) => showErrorMsg(`Cannot add bug`, err))
   }
@@ -67,27 +65,47 @@ export function BugIndex() {
 
     bugService
       .save(bugToSave)
-      .then((savedBug) => {
-        const bugsToUpdate = bugs.map((currBug) => (currBug._id === savedBug._id ? savedBug : currBug))
-        setBugs(bugsToUpdate)
+      .then(() => {
         showSuccessMsg('Bug updated')
+        loadBugs()
       })
       .catch((err) => showErrorMsg('Cannot update bug', err))
   }
 
-  function onSetFilterBy(newFilter) {
-    setFilterBy((prevFilter) => ({ ...prevFilter, ...newFilter }))
+  function onSetFilterBy(filterBy) {
+    setFilterBy((prev) => ({ ...prev, ...filterBy }))
+    setPageIdx(0)
+  }
+
+  function onNextPage() {
+    if (pageIdx < totalPages - 1) setPageIdx((prev) => prev + 1)
+  }
+
+  function onPrevPage() {
+    if (pageIdx > 0) setPageIdx((prev) => prev - 1)
   }
 
   return (
     <section className='bug-index main-content'>
-      <BugFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} availableLabels={availableLabels} />
+      <BugFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
       <header>
         <h3>Bug List</h3>
         <button onClick={onAddBug}>Add Bug</button>
       </header>
 
-      <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />
+      {bugs && <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />}
+
+      <div className='paging-controls'>
+        <button onClick={onPrevPage} disabled={pageIdx === 0}>
+          ◀ Prev
+        </button>
+        <span>
+          Page {pageIdx + 1} / {totalPages}
+        </span>
+        <button onClick={onNextPage} disabled={pageIdx >= totalPages - 1}>
+          Next ▶
+        </button>
+      </div>
     </section>
   )
 }

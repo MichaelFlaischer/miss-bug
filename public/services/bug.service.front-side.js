@@ -16,7 +16,7 @@ function query(queryOptions) {
     .then((res) => res.data)
     .catch((err) => {
       console.log('Error fetching bugs:', err)
-      return []
+      return { bugs: [], totalPages: 0 }
     })
 }
 

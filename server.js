@@ -13,7 +13,7 @@ app.use(cookieParser())
 app.use(bodyParser.json())
 
 app.get('/api/bug', (req, res) => {
-  const { title, severity, description, labels, sortBy, sortOrder } = req.query
+  const { title, severity, description, labels, sortBy, sortOrder, pageIdx = 0, pageSize = 5 } = req.query
 
   bugService
     .query()
@@ -52,7 +52,10 @@ app.get('/api/bug', (req, res) => {
         })
       }
 
-      res.send(filteredBugs)
+      const start = pageIdx * pageSize
+      const end = start + +pageSize
+      const pagedBugs = filteredBugs.slice(start, end)
+      res.send({ bugs: pagedBugs, totalPages: Math.ceil(filteredBugs.length / pageSize) })
     })
     .catch((err) => {
       loggerService.error('Cannot get bugs', err)

@@ -27,6 +27,12 @@ export function BugFilter({ filterBy, onSetFilterBy }) {
     onSetFilterBy(filterByToEdit)
   }
 
+  function onClearFilter() {
+    const clearedFilter = { title: '', description: '', severity: '' }
+    setFilterByToEdit(clearedFilter)
+    onSetFilterBy(clearedFilter)
+  }
+
   const { title = '', description = '', severity = '' } = filterByToEdit
 
   return (
@@ -43,6 +49,9 @@ export function BugFilter({ filterBy, onSetFilterBy }) {
         <input value={severity} onChange={handleChange} type='number' placeholder='Min severity' id='severity' name='severity' />
 
         <button type='submit'>Apply Filter</button>
+        <button type='button' onClick={onClearFilter}>
+          Clear Filter
+        </button>
       </form>
     </section>
   )

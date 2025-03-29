@@ -1,4 +1,4 @@
-const { useState, useEffect, useRef } = React
+const { useState, useEffect } = React
 const { Link, useParams } = ReactRouterDOM
 
 import { bugService } from '../services/bug.service.front-side.js'
@@ -11,7 +11,7 @@ export function BugDetails() {
   useEffect(() => {
     bugService
       .getById(bugId)
-      .then((bug) => setBug(bug))
+      .then(setBug)
       .catch((err) => {
         console.log(err)
         showErrorMsg(`Cannot load bug`, err)
@@ -24,22 +24,28 @@ export function BugDetails() {
 
   return (
     <div className='bug-details'>
-      <h3>Bug Details</h3>
+      <h3>🐞 Bug Details</h3>
       {!bug && <p className='loading'>Loading....</p>}
       {bug && (
         <div>
-          <h4>{bug.title}</h4>
+          <h4>🔹 {bug.title}</h4>
           <h5>
-            description: <span>{bug.description}</span>
+            Description: <span>{bug.description}</span>
           </h5>
           <h5>
             Severity: <span>{bug.severity}</span>
           </h5>
-          <button onClick={() => handleDownloadPDF()}>Save Bug PDF</button>
+          <h5>
+            Created At: <span>{new Date(bug.createdAt).toLocaleString()}</span>
+          </h5>
+          <h5>
+            Labels: <span>{bug.labels.length ? bug.labels.join(', ') : 'No labels assigned'}</span>
+          </h5>
+          <button onClick={handleDownloadPDF}>Save Bug PDF</button>
         </div>
       )}
       <hr />
-      <Link to='/bug'>Back to List</Link>
+      <Link to='/bug'>⬅ Back to List</Link>
     </div>
   )
 }

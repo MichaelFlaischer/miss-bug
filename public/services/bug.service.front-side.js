@@ -23,7 +23,7 @@ function getById(bugId) {
   return axios
     .get(BASE_URL + bugId)
     .then((res) => res.data)
-    .catch((bugErr) => console.dir(bugErr, 'hello'))
+    .catch((err) => console.error('Error fetching bug by ID:', err))
 }
 
 function getPDFById(bugId) {
@@ -43,23 +43,37 @@ function getPDFById(bugId) {
 }
 
 function remove(bugId) {
-  return axios.get(BASE_URL + bugId + '/remove').then((res) => res.data)
-}
-
-function save(bug) {
-  const url = BASE_URL + 'save'
-  let queryParams = `?title=${bug.title}&description=${bug.description}&severity=${bug.severity}`
-
-  if (bug._id) queryParams += `&_id=${bug._id}`
-
   return axios
-    .get(url + queryParams)
+    .delete(BASE_URL + bugId)
     .then((res) => res.data)
     .catch((err) => {
-      console.log('Error saving bug:', err)
+      console.error('Error removing bug:', err)
     })
 }
 
+function save(bug) {
+  if (bug._id) {
+    return axios
+      .put(BASE_URL + bug._id, bug)
+      .then((res) => res.data)
+      .catch((err) => {
+        console.error('Error updating bug:', err)
+      })
+  } else {
+    return axios
+      .post(BASE_URL, bug)
+      .then((res) => res.data)
+      .catch((err) => {
+        console.error('Error creating bug:', err)
+      })
+  }
+}
+
 function getDefaultFilter() {
-  return { txt: '', severity: 0 }
+  return {
+    title: '',
+    description: '',
+    severity: 0,
+    labels: [],
+  }
 }

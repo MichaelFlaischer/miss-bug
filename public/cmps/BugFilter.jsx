@@ -56,6 +56,7 @@ export function BugFilter({ filterBy, onSetFilterBy, availableLabels = [] }) {
   }
 
   const { title = '', description = '', severity = '', labels = [] } = filterByToEdit
+  console.log(availableLabels)
 
   return (
     <section className='bug-filter'>

@@ -11,6 +11,8 @@ export const bugService = {
 }
 
 function query(queryOptions) {
+  console.log('front quey:', queryOptions)
+
   return axios
     .get(BASE_URL, { params: queryOptions })
     .then((res) => res.data)
@@ -23,7 +25,11 @@ function query(queryOptions) {
 function getById(bugId) {
   return axios
     .get(BASE_URL + bugId)
-    .then((res) => res.data)
+    .then((res) => {
+      console.log(res.data)
+
+      return res.data
+    })
     .catch((err) => {
       console.error('Error fetching bug by ID:', err)
     })

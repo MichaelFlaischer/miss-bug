@@ -1,5 +1,29 @@
 [
     {
+        "_id": "bug017",
+        "title": "App crashes on Android 12",
+        "description": "Fatal error when opening app on Android 12",
+        "severity": 1,
+        "createdAt": 1658107359454,
+        "labels": [
+            "performance",
+            "mobile",
+            "email"
+        ]
+    },
+    {
+        "_id": "bug020",
+        "title": "Audio playback stutters",
+        "description": "Playing audio files results in choppy playback",
+        "severity": 3,
+        "createdAt": 1661107359454,
+        "labels": [
+            "ui",
+            "dev-branch",
+            "email"
+        ]
+    },
+    {
         "_id": "It0tqs",
         "title": "Bug 1743171047077",
         "description": "A new bug detected",
@@ -9,18 +33,6 @@
             "ui",
             "email",
             "backend"
-        ]
-    },
-    {
-        "_id": "bug003",
-        "title": "Dashboard not loading",
-        "description": "Gets stuck on loading screen",
-        "severity": 99,
-        "createdAt": 1742306457289,
-        "labels": [
-            "email",
-            "critical",
-            "dev-branch"
         ]
     },
     {
@@ -36,6 +48,30 @@
         ]
     },
     {
+        "_id": "bug010",
+        "title": "Cannot delete account",
+        "description": "Clicking 'Delete Account' does nothing",
+        "severity": 565,
+        "createdAt": 1743171041903,
+        "labels": [
+            "ui",
+            "auth",
+            "critical"
+        ]
+    },
+    {
+        "_id": "bug916",
+        "title": "Cannot delete account (copy)",
+        "description": "Clicking 'Delete Account' does nothing",
+        "severity": 565,
+        "createdAt": 1743235018893,
+        "labels": [
+            "auth",
+            "critical",
+            "dev-branch"
+        ]
+    },
+    {
         "_id": "bug005",
         "title": "Checkout page crashes",
         "description": "Error 500 when proceeding to checkout",
@@ -45,18 +81,6 @@
             "performance",
             "ui",
             "auth"
-        ]
-    },
-    {
-        "_id": "bug006",
-        "title": "Profile picture upload fails",
-        "description": "Server returns 400 Bad Request",
-        "severity": 3,
-        "createdAt": 1647107359454,
-        "labels": [
-            "email",
-            "backend",
-            "ui"
         ]
     },
     {
@@ -72,50 +96,62 @@
         ]
     },
     {
-        "_id": "bug008",
-        "title": "Notifications not appearing",
-        "description": "User does not get notified of new messages",
-        "severity": 2,
-        "createdAt": 1649107359454,
+        "_id": "bug419",
+        "title": "Dark mode not saving (copy)",
+        "description": "Theme resets on page refresh",
+        "severity": 4,
+        "createdAt": 1743235018893,
         "labels": [
-            "mobile",
-            "dev-branch",
-            "critical"
+            "ui",
+            "email",
+            "mobile"
         ]
     },
     {
-        "_id": "bug009",
-        "title": "Search function returning incorrect results",
-        "description": "Searching for a term gives unrelated results",
-        "severity": 3,
-        "createdAt": 1743234880680,
+        "_id": "bug444",
+        "title": "Dark mode not saving (copy)",
+        "description": "Theme resets on page refresh",
+        "severity": 4,
+        "createdAt": 1743235018894,
         "labels": [
             "ui",
-            "performance",
+            "email",
             "dev-branch"
         ]
     },
     {
-        "_id": "bug010",
-        "title": "Cannot delete account",
-        "description": "Clicking 'Delete Account' does nothing",
-        "severity": 565,
-        "createdAt": 1743171041903,
+        "_id": "bug968",
+        "title": "Dark mode not saving (copy) (copy)",
+        "description": "Theme resets on page refresh",
+        "severity": 4,
+        "createdAt": 1743235018893,
         "labels": [
+            "mobile",
             "ui",
-            "auth",
             "critical"
         ]
     },
     {
-        "_id": "bug011",
-        "title": "Mobile layout broken",
-        "description": "Navigation menu overlaps content",
-        "severity": 2,
-        "createdAt": 1652107359454,
+        "_id": "bug003",
+        "title": "Dashboard not loading",
+        "description": "Gets stuck on loading screen",
+        "severity": 99,
+        "createdAt": 1742306457289,
         "labels": [
-            "dev-branch",
-            "mobile",
+            "email",
+            "critical",
+            "dev-branch"
+        ]
+    },
+    {
+        "_id": "bug845",
+        "title": "Dashboard not loading (copy)",
+        "description": "Gets stuck on loading screen",
+        "severity": 99,
+        "createdAt": 1743235018893,
+        "labels": [
+            "ui",
+            "critical",
             "email"
         ]
     },
@@ -144,147 +180,15 @@
         ]
     },
     {
-        "_id": "bug014",
-        "title": "Slow page loading on Safari",
-        "description": "Performance drops significantly on Safari",
-        "severity": 2,
-        "createdAt": 1655107359454,
-        "labels": [
-            "dev-branch",
-            "performance",
-            "ui"
-        ]
-    },
-    {
-        "_id": "bug016",
-        "title": "Password reset email not sent",
-        "description": "Users do not receive reset email",
-        "severity": 1,
-        "createdAt": 1657107359454,
-        "labels": [
-            "ui",
-            "email",
-            "performance"
-        ]
-    },
-    {
-        "_id": "bug017",
-        "title": "App crashes on Android 12",
-        "description": "Fatal error when opening app on Android 12",
-        "severity": 1,
-        "createdAt": 1658107359454,
-        "labels": [
-            "performance",
-            "mobile",
-            "email"
-        ]
-    },
-    {
-        "_id": "bug019",
-        "title": "404 error on help page",
-        "description": "Clicking 'Help' in menu leads to 404",
-        "severity": 2,
-        "createdAt": 1660107359454,
-        "labels": [
-            "performance",
-            "backend",
-            "auth"
-        ]
-    },
-    {
-        "_id": "bug020",
-        "title": "Audio playback stutters",
-        "description": "Playing audio files results in choppy playback",
+        "_id": "bug463",
+        "title": "File download fails on Firefox (copy)",
+        "description": "Downloads do not start on Firefox",
         "severity": 3,
-        "createdAt": 1661107359454,
-        "labels": [
-            "ui",
-            "dev-branch",
-            "email"
-        ]
-    },
-    {
-        "_id": "bug419",
-        "title": "Dark mode not saving (copy)",
-        "description": "Theme resets on page refresh",
-        "severity": 4,
-        "createdAt": 1743235018893,
-        "labels": [
-            "ui",
-            "email",
-            "mobile"
-        ]
-    },
-    {
-        "_id": "bug968",
-        "title": "Dark mode not saving (copy) (copy)",
-        "description": "Theme resets on page refresh",
-        "severity": 4,
-        "createdAt": 1743235018893,
-        "labels": [
-            "mobile",
-            "ui",
-            "critical"
-        ]
-    },
-    {
-        "_id": "bug845",
-        "title": "Dashboard not loading (copy)",
-        "description": "Gets stuck on loading screen",
-        "severity": 99,
-        "createdAt": 1743235018893,
-        "labels": [
-            "ui",
-            "critical",
-            "email"
-        ]
-    },
-    {
-        "_id": "bug916",
-        "title": "Cannot delete account (copy)",
-        "description": "Clicking 'Delete Account' does nothing",
-        "severity": 565,
-        "createdAt": 1743235018893,
-        "labels": [
-            "auth",
-            "critical",
-            "dev-branch"
-        ]
-    },
-    {
-        "_id": "bug816",
-        "title": "404 error on help page (copy)",
-        "description": "Clicking 'Help' in menu leads to 404",
-        "severity": 2,
-        "createdAt": 1743235018893,
-        "labels": [
-            "auth",
-            "backend",
-            "ui"
-        ]
-    },
-    {
-        "_id": "bug444",
-        "title": "Dark mode not saving (copy)",
-        "description": "Theme resets on page refresh",
-        "severity": 4,
-        "createdAt": 1743235018894,
-        "labels": [
-            "ui",
-            "email",
-            "dev-branch"
-        ]
-    },
-    {
-        "_id": "bug943",
-        "title": "404 error on help page (copy) (copy)",
-        "description": "Clicking 'Help' in menu leads to 404",
-        "severity": 2,
         "createdAt": 1743235018894,
         "labels": [
             "backend",
             "ui",
-            "performance"
+            "auth"
         ]
     },
     {
@@ -312,39 +216,75 @@
         ]
     },
     {
-        "_id": "bug960",
-        "title": "404 error on help page (copy) (copy) (copy)",
-        "description": "Clicking 'Help' in menu leads to 404",
+        "_id": "bug011",
+        "title": "Mobile layout broken",
+        "description": "Navigation menu overlaps content",
         "severity": 2,
-        "createdAt": 1743235018894,
+        "createdAt": 1652107359454,
         "labels": [
-            "performance",
+            "dev-branch",
+            "mobile",
+            "email"
+        ]
+    },
+    {
+        "_id": "bug008",
+        "title": "Notifications not appearing",
+        "description": "User does not get notified of new messages",
+        "severity": 2,
+        "createdAt": 1649107359454,
+        "labels": [
+            "mobile",
             "dev-branch",
             "critical"
         ]
     },
     {
-        "_id": "bug463",
-        "title": "File download fails on Firefox (copy)",
-        "description": "Downloads do not start on Firefox",
-        "severity": 3,
-        "createdAt": 1743235018894,
-        "labels": [
-            "backend",
-            "ui",
-            "auth"
-        ]
-    },
-    {
-        "_id": "bug351",
-        "title": "404 error on help page (copy) (copy)",
-        "description": "Clicking 'Help' in menu leads to 404",
-        "severity": 2,
-        "createdAt": 1743235018894,
+        "_id": "bug016",
+        "title": "Password reset email not sent",
+        "description": "Users do not receive reset email",
+        "severity": 1,
+        "createdAt": 1657107359454,
         "labels": [
             "ui",
             "email",
-            "backend"
+            "performance"
+        ]
+    },
+    {
+        "_id": "bug006",
+        "title": "Profile picture upload fails",
+        "description": "Server returns 400 Bad Request",
+        "severity": 3,
+        "createdAt": 1647107359454,
+        "labels": [
+            "email",
+            "backend",
+            "ui"
+        ]
+    },
+    {
+        "_id": "bug009",
+        "title": "Search function returning incorrect results",
+        "description": "Searching for a term gives unrelated results",
+        "severity": 3,
+        "createdAt": 1743234880680,
+        "labels": [
+            "ui",
+            "performance",
+            "dev-branch"
+        ]
+    },
+    {
+        "_id": "bug014",
+        "title": "Slow page loading on Safari",
+        "description": "Performance drops significantly on Safari",
+        "severity": 2,
+        "createdAt": 1655107359454,
+        "labels": [
+            "dev-branch",
+            "performance",
+            "ui"
         ]
     }
 ]

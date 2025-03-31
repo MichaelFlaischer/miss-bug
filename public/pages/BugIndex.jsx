@@ -10,12 +10,17 @@ export function BugIndex() {
   const [bugs, setBugs] = useState(null)
   const [filterBy, setFilterBy] = useState(bugService.getDefaultFilter())
   const [pageIdx, setPageIdx] = useState(0)
+  const [lables, setLables] = useState([])
   const [totalPages, setTotalPages] = useState(0)
   const PAGE_SIZE = 5
 
   useEffect(() => {
     loadBugs()
   }, [filterBy, pageIdx])
+
+  useEffect(() => {
+    loadLables()
+  }, [])
 
   function loadBugs() {
     const queryOptions = {
@@ -31,6 +36,13 @@ export function BugIndex() {
         setTotalPages(totalPages)
       })
       .catch((err) => showErrorMsg(`Couldn't load bugs - ${err}`))
+  }
+
+  function loadLables() {
+    bugService
+      .getAvailableLabels()
+      .then(setLables)
+      .catch((err) => showErrorMsg(`Couldn't load Lables - ${err}`))
   }
 
   function onRemoveBug(bugId) {
@@ -87,7 +99,7 @@ export function BugIndex() {
 
   return (
     <section className='bug-index main-content'>
-      <BugFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
+      <BugFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} availableLabels={lables} />
       <header>
         <h3>Bug List</h3>
         <button onClick={onAddBug}>Add Bug</button>

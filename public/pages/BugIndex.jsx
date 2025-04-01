@@ -5,8 +5,11 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
 import { BugFilter } from '../cmps/BugFilter.jsx'
 import { BugList } from '../cmps/BugList.jsx'
+import { authService } from '../services/auth.service.js'
 
 export function BugIndex() {
+  const loggedinUser = authService.getLoggedinUser()
+
   const [bugs, setBugs] = useState(null)
   const [filterBy, setFilterBy] = useState(bugService.getDefaultFilter())
   const [pageIdx, setPageIdx] = useState(0)

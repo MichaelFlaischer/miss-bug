@@ -1,19 +1,7 @@
 [
     {
-        "_id": "bug017",
-        "title": "App crashes on Android 12",
-        "description": "Fatal error when opening app on Android 12",
-        "severity": 1,
-        "createdAt": 1658107359454,
-        "labels": [
-            "performance",
-            "mobile",
-            "email"
-        ]
-    },
-    {
-        "_id": "bug020",
-        "title": "Audio playback stutters",
+        "_id": "bug_001",
+        "title": "Audio playback stutters #2",
         "description": "Playing audio files results in choppy playback",
         "severity": 3,
         "createdAt": 1661107359454,
@@ -21,11 +9,15 @@
             "ui",
             "dev-branch",
             "email"
-        ]
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
     },
     {
-        "_id": "It0tqs",
-        "title": "Bug 1743171047077",
+        "_id": "bug_002",
+        "title": "Bug 1743171047077 #3",
         "description": "A new bug detected",
         "severity": 3,
         "createdAt": 1743234880680,
@@ -33,11 +25,15 @@
             "ui",
             "email",
             "backend"
-        ]
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
     },
     {
-        "_id": "bug004",
-        "title": "Cannot add items to cart",
+        "_id": "bug_003",
+        "title": "Cannot add items to cart #4",
         "description": "Clicking 'Add to cart' does not update cart",
         "severity": 2,
         "createdAt": 1743234880680,
@@ -45,246 +41,250 @@
             "auth",
             "dev-branch",
             "backend"
-        ]
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
     },
     {
-        "_id": "bug010",
-        "title": "Cannot delete account",
-        "description": "Clicking 'Delete Account' does nothing",
-        "severity": 565,
-        "createdAt": 1743171041903,
-        "labels": [
-            "ui",
-            "auth",
-            "critical"
-        ]
-    },
-    {
-        "_id": "bug916",
-        "title": "Cannot delete account (copy)",
-        "description": "Clicking 'Delete Account' does nothing",
-        "severity": 565,
-        "createdAt": 1743235018893,
-        "labels": [
-            "auth",
-            "critical",
-            "dev-branch"
-        ]
-    },
-    {
-        "_id": "bug005",
-        "title": "Checkout page crashes",
-        "description": "Error 500 when proceeding to checkout",
-        "severity": 436436,
-        "createdAt": 1742306444632,
-        "labels": [
-            "performance",
-            "ui",
-            "auth"
-        ]
-    },
-    {
-        "_id": "bug007",
-        "title": "Dark mode not saving",
-        "description": "Theme resets on page refresh",
-        "severity": 4,
-        "createdAt": 1648107359454,
-        "labels": [
-            "email",
-            "dev-branch",
-            "ui"
-        ]
-    },
-    {
-        "_id": "bug419",
-        "title": "Dark mode not saving (copy)",
-        "description": "Theme resets on page refresh",
-        "severity": 4,
-        "createdAt": 1743235018893,
-        "labels": [
-            "ui",
-            "email",
-            "mobile"
-        ]
-    },
-    {
-        "_id": "bug444",
-        "title": "Dark mode not saving (copy)",
-        "description": "Theme resets on page refresh",
-        "severity": 4,
-        "createdAt": 1743235018894,
-        "labels": [
-            "ui",
-            "email",
-            "dev-branch"
-        ]
-    },
-    {
-        "_id": "bug968",
-        "title": "Dark mode not saving (copy) (copy)",
-        "description": "Theme resets on page refresh",
-        "severity": 4,
-        "createdAt": 1743235018893,
-        "labels": [
-            "mobile",
-            "ui",
-            "critical"
-        ]
-    },
-    {
-        "_id": "bug003",
-        "title": "Dashboard not loading",
-        "description": "Gets stuck on loading screen",
-        "severity": 99,
-        "createdAt": 1742306457289,
-        "labels": [
-            "email",
-            "critical",
-            "dev-branch"
-        ]
-    },
-    {
-        "_id": "bug845",
-        "title": "Dashboard not loading (copy)",
-        "description": "Gets stuck on loading screen",
-        "severity": 99,
-        "createdAt": 1743235018893,
-        "labels": [
-            "ui",
-            "critical",
-            "email"
-        ]
-    },
-    {
-        "_id": "bug012",
-        "title": "Email verification link expired too soon",
-        "description": "Link expires within minutes",
-        "severity": 4,
-        "createdAt": 1653107359454,
-        "labels": [
-            "critical",
-            "performance",
-            "email"
-        ]
-    },
-    {
-        "_id": "bug013",
-        "title": "File download fails on Firefox",
-        "description": "Downloads do not start on Firefox",
-        "severity": 3,
-        "createdAt": 1654107359454,
-        "labels": [
-            "performance",
-            "dev-branch",
-            "critical"
-        ]
-    },
-    {
-        "_id": "bug463",
-        "title": "File download fails on Firefox (copy)",
-        "description": "Downloads do not start on Firefox",
-        "severity": 3,
-        "createdAt": 1743235018894,
-        "labels": [
-            "backend",
-            "ui",
-            "auth"
-        ]
-    },
-    {
-        "_id": "bug888",
-        "title": "Language settings not saving (copy)",
-        "description": "Switching languages does not persist after refresh",
-        "severity": 3,
-        "createdAt": 1743235018894,
-        "labels": [
-            "performance",
-            "backend",
-            "dev-branch"
-        ]
-    },
-    {
-        "_id": "bug813",
-        "title": "Language settings not saving (copy) (copy)",
-        "description": "Switching languages does not persist after refresh",
-        "severity": 3,
-        "createdAt": 1743235018894,
-        "labels": [
-            "auth",
-            "backend",
-            "mobile"
-        ]
-    },
-    {
-        "_id": "bug011",
-        "title": "Mobile layout broken",
-        "description": "Navigation menu overlaps content",
-        "severity": 2,
-        "createdAt": 1652107359454,
-        "labels": [
-            "dev-branch",
-            "mobile",
-            "email"
-        ]
-    },
-    {
-        "_id": "bug008",
-        "title": "Notifications not appearing",
-        "description": "User does not get notified of new messages",
-        "severity": 2,
-        "createdAt": 1649107359454,
-        "labels": [
-            "mobile",
-            "dev-branch",
-            "critical"
-        ]
-    },
-    {
-        "_id": "bug016",
-        "title": "Password reset email not sent",
-        "description": "Users do not receive reset email",
+        "_id": "bug_004",
+        "title": "App crashes on Android 12 #5",
+        "description": "Fatal error when opening app on Android 12",
         "severity": 1,
-        "createdAt": 1657107359454,
+        "createdAt": 1658107359454,
+        "labels": [
+            "performance",
+            "mobile",
+            "email"
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
+    },
+    {
+        "_id": "bug_005",
+        "title": "Audio playback stutters #6",
+        "description": "Playing audio files results in choppy playback",
+        "severity": 3,
+        "createdAt": 1661107359454,
         "labels": [
             "ui",
-            "email",
-            "performance"
-        ]
+            "dev-branch",
+            "email"
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
     },
     {
-        "_id": "bug006",
-        "title": "Profile picture upload fails",
-        "description": "Server returns 400 Bad Request",
-        "severity": 3,
-        "createdAt": 1647107359454,
-        "labels": [
-            "email",
-            "backend",
-            "ui"
-        ]
-    },
-    {
-        "_id": "bug009",
-        "title": "Search function returning incorrect results",
-        "description": "Searching for a term gives unrelated results",
+        "_id": "bug_006",
+        "title": "Bug 1743171047077 #7",
+        "description": "A new bug detected",
         "severity": 3,
         "createdAt": 1743234880680,
         "labels": [
             "ui",
-            "performance",
-            "dev-branch"
-        ]
+            "email",
+            "backend"
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
     },
     {
-        "_id": "bug014",
-        "title": "Slow page loading on Safari",
-        "description": "Performance drops significantly on Safari",
+        "_id": "bug_007",
+        "title": "Cannot add items to cart #8",
+        "description": "Clicking 'Add to cart' does not update cart",
         "severity": 2,
-        "createdAt": 1655107359454,
+        "createdAt": 1743234880680,
         "labels": [
+            "auth",
             "dev-branch",
+            "backend"
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
+    },
+    {
+        "_id": "bug_008",
+        "title": "App crashes on Android 12 #9",
+        "description": "Fatal error when opening app on Android 12",
+        "severity": 1,
+        "createdAt": 1658107359454,
+        "labels": [
             "performance",
-            "ui"
-        ]
+            "mobile",
+            "email"
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
+    },
+    {
+        "_id": "bug_009",
+        "title": "Audio playback stutters #10",
+        "description": "Playing audio files results in choppy playback",
+        "severity": 3,
+        "createdAt": 1661107359454,
+        "labels": [
+            "ui",
+            "dev-branch",
+            "email"
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
+    },
+    {
+        "_id": "bug_010",
+        "title": "Bug 1743171047077 #11",
+        "description": "A new bug detected",
+        "severity": 3,
+        "createdAt": 1743234880680,
+        "labels": [
+            "ui",
+            "email",
+            "backend"
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
+    },
+    {
+        "_id": "bug_011",
+        "title": "Cannot add items to cart #12",
+        "description": "Clicking 'Add to cart' does not update cart",
+        "severity": 2,
+        "createdAt": 1743234880680,
+        "labels": [
+            "auth",
+            "dev-branch",
+            "backend"
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
+    },
+    {
+        "_id": "bug_012",
+        "title": "App crashes on Android 12 #13",
+        "description": "Fatal error when opening app on Android 12",
+        "severity": 1,
+        "createdAt": 1658107359454,
+        "labels": [
+            "performance",
+            "mobile",
+            "email"
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
+    },
+    {
+        "_id": "bug_013",
+        "title": "Audio playback stutters #14",
+        "description": "Playing audio files results in choppy playback",
+        "severity": 3,
+        "createdAt": 1661107359454,
+        "labels": [
+            "ui",
+            "dev-branch",
+            "email"
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
+    },
+    {
+        "_id": "bug_014",
+        "title": "Bug 1743171047077 #15",
+        "description": "A new bug detected",
+        "severity": 3,
+        "createdAt": 1743234880680,
+        "labels": [
+            "ui",
+            "email",
+            "backend"
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
+    },
+    {
+        "_id": "bug_015",
+        "title": "Cannot add items to cart #16",
+        "description": "Clicking 'Add to cart' does not update cart",
+        "severity": 2,
+        "createdAt": 1743234880680,
+        "labels": [
+            "auth",
+            "dev-branch",
+            "backend"
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
+    },
+    {
+        "_id": "bug_017",
+        "title": "Audio playback stutters #18",
+        "description": "Playing audio files results in choppy playback",
+        "severity": 3,
+        "createdAt": 1661107359454,
+        "labels": [
+            "ui",
+            "dev-branch",
+            "email"
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
+    },
+    {
+        "_id": "bug_018",
+        "title": "Bug 1743171047077 #19",
+        "description": "A new bug detected",
+        "severity": 3,
+        "createdAt": 1743234880680,
+        "labels": [
+            "ui",
+            "email",
+            "backend"
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
+    },
+    {
+        "_id": "bug_019",
+        "title": "Cannot add items to cart #20",
+        "description": "Clicking 'Add to cart' does not update cart",
+        "severity": 2,
+        "createdAt": 1743234880680,
+        "labels": [
+            "auth",
+            "dev-branch",
+            "backend"
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
     }
 ]

@@ -30,11 +30,13 @@ export function AppHeader({ loggedinUser, setLoggedinUser }) {
         <NavLink to='/bug'>Bugs</NavLink>
         <NavLink to='/about'>About</NavLink>
 
+        {loggedinUser && loggedinUser.isAdmin && <NavLink to='/user'>Users</NavLink>}
+
         {!loggedinUser ? (
           <NavLink to='/auth'>Login</NavLink>
         ) : (
           <div className='user'>
-            <Link to={`/user/${loggedinUser._id}`}>{loggedinUser.fullname}</Link>
+            <NavLink to={`/user/${loggedinUser._id}`}>{loggedinUser.fullname}</NavLink>
             <button onClick={onLogout}>Logout</button>
           </div>
         )}

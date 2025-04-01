@@ -14,10 +14,10 @@ import { BugDetails } from './pages/BugDetails.jsx'
 import { AboutUs } from './pages/AboutUs.jsx'
 import { LoginSignup } from './pages/LoginSignup.jsx'
 import { UserDetails } from './pages/UserDetails.jsx'
+import { UserIndex } from './pages/UserIndex.jsx'
 
 export function App() {
   const [loggedinUser, setLoggedinUser] = useState(authService.getLoggedinUser())
-  const Router = ReactRouterDOM.HashRouter
 
   return (
     <Router>
@@ -33,6 +33,7 @@ export function App() {
             <Route path='/about' element={<AboutUs />} />
             <Route path='/auth' element={<LoginSignup setLoggedinUser={setLoggedinUser} />} />
             <Route path='/user/:userId' element={<UserDetails />} />
+            <Route path='/user' element={<UserIndex />} />
           </Routes>
         </main>
 

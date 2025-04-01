@@ -8,11 +8,10 @@ export const bugService = {
   getDefaultFilter,
   getPDFById,
   getAvailableLabels,
+  getBugsByUser,
 }
 
 function query(queryOptions) {
-  console.log('front quey:', queryOptions)
-
   return axios
     .get(BASE_URL, { params: queryOptions })
     .then((res) => res.data)
@@ -48,6 +47,16 @@ function getPDFById(bugId) {
     })
     .catch((err) => {
       console.error('Failed to download PDF:', err)
+    })
+}
+
+function getBugsByUser(userId) {
+  return axios
+    .get(`${BASE_URL}by-user/${userId}`)
+    .then((res) => res.data)
+    .catch((err) => {
+      console.error('Error fetching bugs by user:', err)
+      return []
     })
 }
 

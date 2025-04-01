@@ -22,20 +22,44 @@ function getById(bugId) {
   return Promise.resolve(bug)
 }
 
-function remove(bugId) {
+function remove(bugId, loggedinUser) {
+  if (!loggedinUser) return Promise.reject('Not authorized')
+
   const bugIdx = bugs.findIndex((bug) => bug._id === bugId)
   if (bugIdx === -1) return Promise.reject('Cannot remove bug - ' + bugId)
+
+  const bug = bugs[bugIdx]
+
+  if (!loggedinUser.isAdmin && bug.creator?._id !== loggedinUser._id) {
+    return Promise.reject('Unauthorized')
+  }
+
   bugs.splice(bugIdx, 1)
   return _savebugsToFile()
 }
 
-function save(bugToSave) {
+function save(bugToSave, loggedinUser) {
+  if (!loggedinUser) return Promise.reject('Not authorized')
+
   if (bugToSave._id) {
     const bugIdx = bugs.findIndex((bug) => bug._id === bugToSave._id)
-    bugs[bugIdx] = bugToSave
+    if (bugIdx === -1) return Promise.reject('Bug not found')
+
+    const bug = bugs[bugIdx]
+    if (!loggedinUser.isAdmin && bug.creator?._id !== loggedinUser._id) {
+      return Promise.reject('Unauthorized')
+    }
+
+    bugs[bugIdx] = { ...bugToSave }
     bugs[bugIdx].createdAt = Date.now()
+    bugs[bugIdx].creator = bug.creator
   } else {
     bugToSave._id = utilService.makeId()
+    bugToSave.createdAt = Date.now()
+    bugToSave.creator = {
+      _id: loggedinUser._id,
+      fullname: loggedinUser.fullname,
+    }
     bugs.unshift(bugToSave)
   }
 

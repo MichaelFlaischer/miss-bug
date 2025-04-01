@@ -66,3 +66,41 @@
 30.3.2025, 17:36:13 - ERROR - Cannot get bugs | TypeError: labels.split is not a function
 30.3.2025, 17:39:16 - ERROR - Cannot get bugs | TypeError: labels.split is not a function
 30.3.2025, 17:40:10 - ERROR - Cannot get bugs | TypeError: labels.split is not a function
+1.4.2025, 16:21:21 - ERROR - Cannot remove user | TypeError: Assignment to constant variable.
+1.4.2025, 16:21:52 - ERROR - Cannot remove user | TypeError: Assignment to constant variable.
+1.4.2025, 16:21:53 - ERROR - Cannot remove user | TypeError: Assignment to constant variable.
+1.4.2025, 16:21:55 - ERROR - Cannot remove user | TypeError: Assignment to constant variable.
+1.4.2025, 16:21:56 - ERROR - Cannot remove user | TypeError: Assignment to constant variable.
+1.4.2025, 16:21:57 - ERROR - Cannot remove user | TypeError: Assignment to constant variable.
+1.4.2025, 16:22:00 - ERROR - Cannot remove user | TypeError: Assignment to constant variable.
+1.4.2025, 16:22:36 - ERROR - Cannot remove user | TypeError: Assignment to constant variable.
+1.4.2025, 16:26:01 - ERROR - Cannot remove user | TypeError: Assignment to constant variable.
+1.4.2025, 16:28:05 - ERROR - Cannot remove user | TypeError: Assignment to constant variable.
+1.4.2025, 16:29:44 - ERROR - Cannot remove user | TypeError: Assignment to constant variable.
+1.4.2025, 16:49:21 - ERROR - Cannot remove user | TypeError: Assignment to constant variable.
+1.4.2025, 16:49:27 - ERROR - Cannot remove user | TypeError: Assignment to constant variable.
+1.4.2025, 16:49:56 - ERROR - Cannot remove user | TypeError: Assignment to constant variable.
+1.4.2025, 16:52:43 - ERROR - Cannot remove user | Not authorized
+1.4.2025, 17:02:25 - ERROR - Cannot remove user | Not authorized
+1.4.2025, 17:03:34 - ERROR - Cannot remove user | Not authorized
+1.4.2025, 17:20:36 - ERROR - Cannot load user | User not found!
+1.4.2025, 17:20:39 - ERROR - Cannot load user | User not found!
+1.4.2025, 17:37:44 - ERROR - Cannot get bugs | ReferenceError: userId is not defined
+1.4.2025, 17:37:53 - ERROR - Cannot get bugs | ReferenceError: userId is not defined
+1.4.2025, 17:38:24 - ERROR - Cannot get bugs | ReferenceError: userId is not defined
+1.4.2025, 17:38:31 - ERROR - Cannot get bugs | ReferenceError: userId is not defined
+1.4.2025, 18:16:38 - ERROR - Failed to get bugs by user | TypeError: bugs.filter is not a function
+1.4.2025, 18:16:38 - ERROR - Failed to get bugs by user | TypeError: bugs.filter is not a function
+1.4.2025, 18:16:38 - ERROR - Failed to get bugs by user | TypeError: bugs.filter is not a function
+1.4.2025, 18:16:38 - ERROR - Failed to get bugs by user | TypeError: bugs.filter is not a function
+1.4.2025, 18:16:38 - ERROR - Failed to get bugs by user | TypeError: bugs.filter is not a function
+1.4.2025, 18:16:38 - ERROR - Failed to get bugs by user | TypeError: bugs.filter is not a function
+1.4.2025, 18:16:38 - ERROR - Failed to get bugs by user | TypeError: bugs.filter is not a function
+1.4.2025, 18:16:38 - ERROR - Failed to get bugs by user | TypeError: bugs.filter is not a function
+1.4.2025, 18:16:38 - ERROR - Failed to get bugs by user | TypeError: bugs.filter is not a function
+1.4.2025, 18:16:38 - ERROR - Failed to get bugs by user | TypeError: bugs.filter is not a function
+1.4.2025, 18:16:38 - ERROR - Failed to get bugs by user | TypeError: bugs.filter is not a function
+1.4.2025, 18:16:38 - ERROR - Failed to get bugs by user | TypeError: bugs.filter is not a function
+1.4.2025, 18:16:38 - ERROR - Failed to get bugs by user | TypeError: bugs.filter is not a function
+1.4.2025, 18:16:38 - ERROR - Failed to get bugs by user | TypeError: bugs.filter is not a function
+1.4.2025, 18:16:38 - ERROR - Failed to get bugs by user | TypeError: bugs.filter is not a function

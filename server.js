@@ -67,6 +67,21 @@ app.get('/api/bug', (req, res) => {
     })
 })
 
+app.get('/api/bug/by-user/:userId', (req, res) => {
+  const { userId } = req.params
+
+  bugService
+    .query()
+    .then((bugs) => {
+      const userBugs = bugs.filter((bug) => bug.creator?._id === userId)
+      res.send(userBugs)
+    })
+    .catch((err) => {
+      loggerService.error('Failed to get bugs by user', err)
+      res.status(500).send('Failed to get bugs by user')
+    })
+})
+
 app.get('/api/bug/labels', (req, res) => {
   bugService
     .getAvailableLabels()
@@ -131,13 +146,16 @@ app.get('/api/bug/:bugId/pdf', (req, res) => {
 })
 
 app.post('/api/bug', (req, res) => {
+  const loggedinUser = authService.validateToken(req.cookies.loginToken)
+  if (!loggedinUser) return res.status(401).send('Unauthorized')
+
   const bugToSave = {
     ...req.body,
     createdAt: Date.now(),
   }
 
   bugService
-    .save(bugToSave)
+    .save(bugToSave, loggedinUser)
     .then((bug) => res.send(bug))
     .catch((err) => {
       loggerService.error('Cannot create bug', err)
@@ -146,13 +164,16 @@ app.post('/api/bug', (req, res) => {
 })
 
 app.put('/api/bug/:bugId', (req, res) => {
+  const loggedinUser = authService.validateToken(req.cookies.loginToken)
+  if (!loggedinUser) return res.status(401).send('Unauthorized')
+
   const bugToUpdate = {
     ...req.body,
     _id: req.params.bugId,
   }
 
   bugService
-    .save(bugToUpdate)
+    .save(bugToUpdate, loggedinUser)
     .then((bug) => res.send(bug))
     .catch((err) => {
       loggerService.error('Cannot update bug', err)
@@ -161,10 +182,13 @@ app.put('/api/bug/:bugId', (req, res) => {
 })
 
 app.delete('/api/bug/:bugId', (req, res) => {
+  const loggedinUser = authService.validateToken(req.cookies.loginToken)
+  if (!loggedinUser) return res.status(401).send('Unauthorized')
+
   const { bugId } = req.params
 
   bugService
-    .remove(bugId)
+    .remove(bugId, loggedinUser)
     .then(() => res.send('Bug removed'))
     .catch((err) => {
       loggerService.error('Cannot remove bug', err)
@@ -179,6 +203,50 @@ app.get('/api/user', (req, res) => {
     .catch((err) => {
       loggerService.error('Cannot load users', err)
       res.status(400).send('Cannot load users')
+    })
+})
+
+app.post('/api/user', (req, res) => {
+  const user = req.body
+
+  userService
+    .add(user)
+    .then((savedUser) => res.send(savedUser))
+    .catch((err) => {
+      loggerService.error('Cannot add user', err)
+      res.status(500).send('Cannot add user')
+    })
+})
+
+app.put('/api/user/:userId', (req, res) => {
+  const user = { ...req.body, _id: req.params.userId }
+
+  userService
+    .update(user)
+    .then((savedUser) => res.send(savedUser))
+    .catch((err) => {
+      loggerService.error('Cannot update user', err)
+      res.status(500).send('Cannot update user')
+    })
+})
+
+app.delete('/api/user/:userId', (req, res) => {
+  const { userId } = req.params
+
+  bugService
+    .query()
+    .then((bugs) => {
+      const userHasBugs = bugs.some((bug) => bug.creator && bug.creator._id === userId)
+      if (userHasBugs) {
+        return res.status(400).send('Cannot remove user - has assigned bugs')
+      }
+
+      return userService.remove(userId, req)
+    })
+    .then(() => res.send({ msg: 'User removed' }))
+    .catch((err) => {
+      loggerService.error('Cannot remove user', err)
+      res.status(500).send('Cannot remove user')
     })
 })
 

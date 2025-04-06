@@ -12,8 +12,43 @@ export const bugService = {
   getAvailableLabels,
 }
 
-function query(filterBy) {
-  return Promise.resolve(bugs)
+function query(filterBy = {}) {
+  let filteredBugs = bugs
+
+  const { title, severity, description, labels, sortBy, sortOrder } = filterBy
+
+  if (title) {
+    filteredBugs = filteredBugs.filter((bug) => bug.title.toLowerCase().includes(title.toLowerCase()))
+  }
+
+  if (description) {
+    filteredBugs = filteredBugs.filter((bug) => bug.description.toLowerCase().includes(description.toLowerCase()))
+  }
+
+  if (severity !== undefined && severity !== '') {
+    filteredBugs = filteredBugs.filter((bug) => bug.severity >= +severity)
+  }
+
+  if (labels) {
+    const labelList = labels.map((label) => label.trim().toLowerCase())
+    filteredBugs = filteredBugs.filter((bug) => bug.labels?.some((label) => labelList.includes(label.toLowerCase())))
+  }
+
+  if (sortBy) {
+    const order = sortOrder === 'desc' ? -1 : 1
+    filteredBugs.sort((a, b) => {
+      const aVal = a[sortBy]
+      const bVal = b[sortBy]
+
+      if (typeof aVal === 'string' && typeof bVal === 'string') {
+        return aVal.localeCompare(bVal) * order
+      } else {
+        return (aVal - bVal) * order
+      }
+    })
+  }
+
+  return Promise.resolve(filteredBugs)
 }
 
 function getById(bugId) {

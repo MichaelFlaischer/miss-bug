@@ -17,47 +17,15 @@ app.use(bodyParser.json())
 app.get('/api/bug', (req, res) => {
   const { title, severity, description, labels, sortBy, sortOrder, pageIdx = 0, pageSize = 5 } = req.query
 
+  const parsedLabels = typeof labels === 'string' ? labels.split(',').map((label) => label.trim()) : labels
+
   bugService
-    .query()
+    .query({ title, severity, description, labels: parsedLabels, sortBy, sortOrder })
     .then((bugs) => {
-      let filteredBugs = bugs
-
-      if (title) {
-        filteredBugs = filteredBugs.filter((bug) => bug.title.toLowerCase().includes(title.toLowerCase()))
-      }
-
-      if (description) {
-        filteredBugs = filteredBugs.filter((bug) => bug.description.toLowerCase().includes(description.toLowerCase()))
-      }
-
-      if (severity !== undefined && severity !== '') {
-        filteredBugs = filteredBugs.filter((bug) => bug.severity >= +severity)
-      }
-
-      if (labels) {
-        const labelList = labels.map((label) => label.trim().toLowerCase())
-        filteredBugs = filteredBugs.filter((bug) => bug.labels?.some((label) => labelList.includes(label.toLowerCase())))
-      }
-
-      if (sortBy) {
-        const order = sortOrder === 'desc' ? -1 : 1
-
-        filteredBugs.sort((a, b) => {
-          const aVal = a[sortBy]
-          const bVal = b[sortBy]
-
-          if (typeof aVal === 'string' && typeof bVal === 'string') {
-            return aVal.localeCompare(bVal) * order
-          } else {
-            return (aVal - bVal) * order
-          }
-        })
-      }
-
       const start = pageIdx * pageSize
       const end = start + +pageSize
-      const pagedBugs = filteredBugs.slice(start, end)
-      res.send({ bugs: pagedBugs, totalPages: Math.ceil(filteredBugs.length / pageSize) })
+      const pagedBugs = bugs.slice(start, end)
+      res.send({ bugs: pagedBugs, totalPages: Math.ceil(bugs.length / pageSize) })
     })
     .catch((err) => {
       loggerService.error('Cannot get bugs', err)

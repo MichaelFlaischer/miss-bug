@@ -1,20 +1,5 @@
 [
     {
-        "title": "Bug 1743521657417",
-        "description": "A new bug detected",
-        "severity": 3,
-        "labels": [
-            "ui",
-            "backend"
-        ],
-        "createdAt": 1743521661610,
-        "_id": "IDx7l6",
-        "creator": {
-            "_id": "u101",
-            "fullname": "Pclgr Smith"
-        }
-    },
-    {
         "_id": "bug_001",
         "title": "Login fails intermittently",
         "description": "Sometimes login does not work",
@@ -365,21 +350,6 @@
         "creator": {
             "_id": "u107",
             "fullname": "Gina Gray"
-        }
-    },
-    {
-        "_id": "bug_028",
-        "title": "App crashes when offline",
-        "description": "Offline usage not supported",
-        "severity": 3,
-        "createdAt": 1700027000000,
-        "labels": [
-            "mobile",
-            "crash"
-        ],
-        "creator": {
-            "_id": "u108",
-            "fullname": "Hank Brown"
         }
     },
     {

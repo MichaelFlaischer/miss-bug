@@ -34,6 +34,9 @@ app.get('/api/bug', (req, res) => {
 })
 
 app.get('/api/bug/by-user/:userId', (req, res) => {
+  const loggedinUser = authService.validateToken(req.cookies.loginToken)
+  if (!loggedinUser) return res.status(401).send('Unauthorized')
+
   const { userId } = req.params
 
   bugService
@@ -77,6 +80,9 @@ app.get('/api/bug/:bugId', (req, res) => {
 })
 
 app.get('/api/bug/:bugId/pdf', (req, res) => {
+  const loggedinUser = authService.validateToken(req.cookies.loginToken)
+  if (!loggedinUser) return res.status(401).send('Unauthorized')
+
   const { bugId } = req.params
 
   bugService
@@ -163,12 +169,30 @@ app.delete('/api/bug/:bugId', (req, res) => {
 })
 
 app.get('/api/user', (req, res) => {
+  const loggedinUser = authService.validateToken(req.cookies.loginToken)
+  if (!loggedinUser) return res.status(401).send('Unauthorized')
+
   userService
     .query()
     .then((users) => res.send(users))
     .catch((err) => {
       loggerService.error('Cannot load users', err)
       res.status(400).send('Cannot load users')
+    })
+})
+
+app.get('/api/user/:userId', (req, res) => {
+  const loggedinUser = authService.validateToken(req.cookies.loginToken)
+  if (!loggedinUser) return res.status(401).send('Unauthorized')
+
+  const { userId } = req.params
+
+  userService
+    .getById(userId)
+    .then((user) => res.send(user))
+    .catch((err) => {
+      loggerService.error('Cannot load user', err)
+      res.status(400).send('Cannot load user')
     })
 })
 
@@ -197,6 +221,11 @@ app.put('/api/user/:userId', (req, res) => {
 })
 
 app.delete('/api/user/:userId', (req, res) => {
+  const loggedinUser = authService.validateToken(req.cookies.loginToken)
+  if (!loggedinUser || !loggedinUser.isAdmin) {
+    return res.status(403).send('Forbidden: Admins only')
+  }
+
   const { userId } = req.params
 
   bugService
@@ -213,18 +242,6 @@ app.delete('/api/user/:userId', (req, res) => {
     .catch((err) => {
       loggerService.error('Cannot remove user', err)
       res.status(500).send('Cannot remove user')
-    })
-})
-
-app.get('/api/user/:userId', (req, res) => {
-  const { userId } = req.params
-
-  userService
-    .getById(userId)
-    .then((user) => res.send(user))
-    .catch((err) => {
-      loggerService.error('Cannot load user', err)
-      res.status(400).send('Cannot load user')
     })
 })
 

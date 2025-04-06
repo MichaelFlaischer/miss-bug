@@ -13,8 +13,8 @@ export function BugDetails() {
       .getById(bugId)
       .then(setBug)
       .catch((err) => {
-        console.log(err)
-        showErrorMsg(`Cannot load bug`, err)
+        console.error('Cannot load bug:', err)
+        showErrorMsg('Cannot load bug')
       })
   }, [])
 
@@ -22,30 +22,38 @@ export function BugDetails() {
     bugService.getPDFById(bugId)
   }
 
+  if (!bug) return <p className='loading'>Loading bug details...</p>
+
   return (
     <div className='bug-details'>
       <h3>🐞 Bug Details</h3>
-      {!bug && <p className='loading'>Loading....</p>}
-      {bug && (
-        <div>
-          <h4>🔹 {bug.title}</h4>
-          <h5>
-            Description: <span>{bug.description}</span>
-          </h5>
-          <h5>
-            Severity: <span>{bug.severity}</span>
-          </h5>
-          <h5>
-            Created At: <span>{new Date(bug.createdAt).toLocaleString()}</span>
-          </h5>
-          <h5>
-            Labels: <span>{bug.labels.length ? bug.labels.join(', ') : 'No labels assigned'}</span>
-          </h5>
-          <button onClick={handleDownloadPDF}>Save Bug PDF</button>
-        </div>
-      )}
+
+      <div className='bug-info'>
+        <h4>🔹 {bug.title}</h4>
+
+        <p>
+          <strong>Description:</strong> {bug.description}
+        </p>
+        <p>
+          <strong>Severity:</strong> {bug.severity}
+        </p>
+        <p>
+          <strong>Created At:</strong> {new Date(bug.createdAt).toLocaleString()}
+        </p>
+        <p>
+          <strong>Labels:</strong> {bug.labels.length ? bug.labels.join(', ') : 'No labels'}
+        </p>
+        {bug.creator.fullname && (
+          <p>
+            <strong>Created By:</strong> {bug.creator.fullname}
+          </p>
+        )}
+      </div>
+
+      <button onClick={handleDownloadPDF}>📄 Save Bug PDF</button>
+
       <hr />
-      <Link to='/bug'>⬅ Back to List</Link>
+      <Link to='/bug'>⬅ Back to Bug List</Link>
     </div>
   )
 }

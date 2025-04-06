@@ -46,7 +46,7 @@ function save(bugToSave, loggedinUser) {
     if (bugIdx === -1) return Promise.reject('Bug not found')
 
     const bug = bugs[bugIdx]
-    if (!loggedinUser.isAdmin && bug.creator?._id !== loggedinUser._id) {
+    if (!loggedinUser.isAdmin && bug.creator._id !== loggedinUser._id) {
       return Promise.reject('Unauthorized')
     }
 

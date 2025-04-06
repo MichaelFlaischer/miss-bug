@@ -41,8 +41,6 @@ export function AppHeader({ loggedinUser, setLoggedinUser }) {
           </div>
         )}
       </nav>
-
-      {/* <UserMsg /> */}
     </header>
   )
 }

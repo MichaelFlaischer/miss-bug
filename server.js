@@ -35,8 +35,6 @@ app.get('/api/bug', (req, res) => {
       }
 
       if (labels) {
-        console.log('<><><><><> IF <><><>', labels)
-
         const labelList = labels.map((label) => label.trim().toLowerCase())
         filteredBugs = filteredBugs.filter((bug) => bug.labels?.some((label) => labelList.includes(label.toLowerCase())))
       }

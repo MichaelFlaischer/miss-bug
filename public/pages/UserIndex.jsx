@@ -2,12 +2,20 @@ const { useEffect, useState } = React
 import { userService } from '../services/user.service.js'
 import { bugService } from '../services/bug.service.front-side.js'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
+import { authService } from '../services/auth.service.js'
+const { useNavigate } = ReactRouter
 
 export function UserIndex() {
   const [users, setUsers] = useState(null)
   const [usersWithBugs, setUsersWithBugs] = useState({})
+  const navigate = useNavigate()
 
   useEffect(() => {
+    if (!authService.getLoggedinUser().isAdmin) {
+      navigate('/')
+      return
+    }
+
     loadUsersAndBugs()
   }, [])
 

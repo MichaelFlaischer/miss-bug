@@ -1,3 +1,15 @@
-.vscode/settings.json
+# VS Code settings
+.vscode/
+
+# Dependencies
 node_modules/
+
+# Logs
 logs/
+*.log
+
+# Production build
+build/
+
+# Environment variables
+.env

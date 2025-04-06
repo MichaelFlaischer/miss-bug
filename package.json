@@ -9,7 +9,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js --ignore data/"
+    "start": "nodemon server.js --ignore data/",
+    "run": "node server.js"
   },
   "author": "",
   "license": "ISC",
